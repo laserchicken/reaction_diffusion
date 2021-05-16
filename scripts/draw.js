@@ -14,11 +14,36 @@ setupCanvas();
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 
-const dA = 0.9;
+document.addEventListener("keydown", updateParams);
+
+let feed = 0.0545;
+let k = 0.06093;
+let dA = 0.9;
 const dB = 0.5;
 const dT = 1;
-const feed = 0.0545;
-const k = 0.06093;
+
+function updateParams(e) {
+  e.preventDefault();
+  if (e.code === "ArrowUp") {
+    console.log(feed);
+    feed += 0.001;
+  } else if (e.code === "ArrowDown") {
+    console.log(feed);
+    feed -= 0.001;
+  } else if (e.code === "ArrowRight") {
+    console.log(k);
+    k += 0.001;
+  } else if (e.code === "ArrowLeft") {
+    console.log(k);
+    k -= 0.001;
+  } else if (e.code === "KeyP") {
+    console.log(dA);
+    dA += 0.01;
+  } else if (e.code === "KeyO") {
+    console.log(dA);
+    dA -= 0.01;
+  }
+}
 
 const init = gpu
   .createKernel(function () {
