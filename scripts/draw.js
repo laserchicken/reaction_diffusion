@@ -1,5 +1,5 @@
 const canvas = document.getElementById("canvas");
-const gpu = new GPU({
+const gpu = new GPU.GPU({
   canvas: canvas,
   mode: "gpu",
 });
